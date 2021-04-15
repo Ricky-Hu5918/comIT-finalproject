@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* using relative path, relative to css file */
+    background: url("../img/bd.jpg");
+}
+
+.frame {
+    text-align: center;
+}
+
+.computer {
+    width: 300px;
+    height: 350px;
+    margin: 20px auto; 
+    border: 1px solid black;
+    border-radius: 5px;
+    background-image: url("../img/bd.jpg");
+}
+
+.input_show {
+    margin-top: 35px;
+    margin-bottom: 5px;
+    width: 256px;
+    max-width: 280px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.btn_num {
+    margin: 3px 1px;
+    height: 30px;
+    width: 60px;
+}
+
+.clearplusequal {
+    margin: 5px 1px;
+}
+
+.btn_clear {
+    height: 30px;
+    width: 126px;
+    margin: 0px 1px;
+}
+
+.btn_compute {
+    width: 126px;
+    height: 30px;
+    margin: 0px 1px;
+}
+
+.btn_histroy {
+    margin: 20px 1px;
+    height: 30px;
+    width: 126px;
+}
+
+.numbers {
+    margin: 6px 1px;
+}
+

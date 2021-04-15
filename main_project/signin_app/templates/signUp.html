@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{% static '/calc_app/signin.css' %}" /> -->
+    <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
+    <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
+    
+</head>
+<body>
+    <!-- header start -->
+    <div class="nav-top w">
+        <div class="nav-logo">
+            <a class="nav-logo-icon" href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
+            </a>
+            <span class="nav-logo-label">
+                <a href="{% url 'index' %}">Tools&Games</a>
+            </span>
+
+        </div>
+
+        <div class="search-form">
+            <form class="" action="https://Google.com/search" method="GET" target="_blank">
+                <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q" >
+                <button class="" type="submit" name="btnK" >Search</button>
+            </form>
+        </div>
+    </div>
+    <!-- header end -->
+
+    <form class="signup_form" method="POST">
+        {% csrf_token %}
+        <!-- {{ form }} -->
+        <div class="login_title">
+            <h3>Sign-Up</h3>
+        </div>
+        <div class="login_input">
+            <span><input type="text" placeholder="User name" id="user_name" name="username"> </span>
+            <label for=""><img src="{% static 'img/clear_icon.png' %}" id="clear" /></label>
+        </div>
+        <div class="login_input">
+            <span><input type="text" placeholder="Email" id="input_email" name="email"> </span>
+            <label for=""><img src="{% static 'img/clear_icon.png' %}" id="clear" /></label>
+        </div>
+        <div class=" login_input">
+            <span><input type="password" placeholder="Password" id="pwd" name="password"> </span>
+            <label for=""><img src="{% static 'img/eye_close.png' %}" id="display_pwd" /></label>
+        </div>
+
+        <div class="btn_pannel">
+            <input class="login_btn" type="submit" value="Sign Up"/>
+        </div>
+
+    </form>
+    <script>
+        //1. 通过ID选中操作源
+        var email_input = document.getElementById("input_email");
+        // console.dir(email_input) //打印输出object树
+        var clear_input_email = document.getElementById("clear");
+
+        //2. 给操作源指定操作事件，同时将操作函数赋值为操作事件
+        // 当clear按钮被点击时，清除文本框输入内容
+        clear_input_email.onclick = function () {
+            //3. 在操作函数内执行相应的操作
+            // console.log("do something!");
+            email_input.value = "";
+            // this.src = "./images/clear_icon.png"  //也可更换其图标
+
+            // 点击clear图标后，恢复其原始状态
+            // this.style.backgroundColor = "#ffffff";
+            // this.style.borderRadius = "0px";
+            // 点击clear图标后，恢复隐藏clear按钮
+            this.style.display = 'none';
+        }
+
+
+        email_input.oninput = function () {
+            // console.log("start to input");
+            // clear_input_email.src = "./images/clear.png"; //也可更换其图标
+
+            // 当文本框有内容输入时，改变clear按钮的背景色和形状
+            // clear_input_email.style.backgroundColor = "#06b45a";
+            // clear_input_email.style.borderRadius = "10px";
+
+            // 当文本框有内容输入时，显示clear按钮
+            clear_input_email.style.display = "inline-block";
+        }
+
+        //通过点击眼睛图标，切换“显示/隐藏”密码
+        var pwd = document.getElementById("pwd");
+        var display_pwd = document.getElementById("display_pwd");
+        var flag = 0;
+        display_pwd.onclick = function () {
+            if (flag == 0) {
+                pwd.type = "text";
+                display_pwd.src = "{% static 'img/eye_open.png' %}";
+                flag = 1;
+            } else {
+                pwd.type = "password";
+                display_pwd.src = "{% static 'img/eye_close.png' %}";
+                flag = 0;
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

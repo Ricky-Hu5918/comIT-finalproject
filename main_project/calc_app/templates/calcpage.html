@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Calculator</title>
+   {% load static %}
+   <link rel="stylesheet" href="{% static 'calc_app/calcpage.css' %}" />
+
+   <!-- load jQuery lib to define $ -->
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+
+<body">
+   <div class="frame">
+      <div class="computer ">
+
+         <input type="text" id="txt_code" name="expression" value="" class="input_show" placeholder="0" disabled />
+
+         <div class="clearplusequal">
+            <button type="button" class="btn btn-success btn-lg btn_clear" id="lgbut_clear"
+               onclick="fun_clear()">Clear</button>
+            <button type="button" class="btn btn-primary btn-lg btn_compute" id="lgbut_compute" onclick="fun_compute()"">=</button>
+         </div>
+
+         <div class=" numbers">
+               <button type=" button" class="btn btn_num" onclick="fun_7()">7</button>
+               <button type="button" class="btn btn_num" onclick="fun_8()">8</button>
+               <button type="button" class="btn btn_num" onclick="fun_9()">9</button>
+               <button type="button" class="btn btn_num" onclick="fun_add()">+</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_4()">4</button>
+               <button type="button" class="btn btn_num" onclick="fun_5()">5</button>
+               <button type="button" class="btn btn_num" onclick="fun_6()">6</button>
+               <button type="button" class="btn btn_num" onclick="fun_sub()">-</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_1()">1</button>
+               <button type="button" class="btn btn_num" onclick="fun_2()">2</button>
+               <button type="button" class="btn btn_num" onclick="fun_3()">3</button>
+               <button type="button" class="btn btn_num" onclick="fun_mul()">x</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_0()">0</button>
+               <button type="button" class="btn btn_num" onclick="fun_00()">00</button>
+               <button type="button" class="btn btn_num" onclick="fun_dot()">.</button>
+               <button type="button" class="btn btn_num" onclick="fun_div()">÷</button>
+               <br />
+               <button type="button" class="btn btn_histroy" onclick="">History</button>
+         </div>
+      </div>
+   </div>
+
+
+   <script>
+      var x = document.getElementById("txt_code");
+
+      function fun_7() {
+         x.value += '7';
+      }
+
+      function fun_8() {
+         x.value += '8';
+      }
+
+      function fun_9() {
+         x.value += '9';
+      }
+
+      function fun_div() {
+         x.value += '/';
+      }
+
+      function fun_4() {
+         x.value += '4';
+      }
+
+      function fun_5() {
+         x.value += '5';
+      }
+
+      function fun_6() {
+         x.value += '6';
+      }
+
+      function fun_mul() {
+         x.value += '*';
+      }
+
+      function fun_1() {
+         x.value += '1';
+      }
+
+      function fun_2() {
+         x.value += '2';
+      }
+
+      function fun_3() {
+         x.value += '3';
+      }
+
+      function fun_sub() {
+         x.value += '-';
+      }
+
+      function fun_0() {
+         x.value += '0';
+      }
+
+      function fun_00() {
+         x.value += '00';
+      }
+
+      function fun_dot() {
+         x.value += '.';
+      }
+
+      function fun_add() {
+         x.value += '+';
+      }
+
+      function fun_clear() {
+         x.value = '';
+         //    y.value = '';
+      }
+
+      // enable csrf_token
+      $.ajaxSetup({
+         data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+      });
+
+      // using onclick method
+      function fun_compute() {
+         // console.log("enter compute function!");
+         $.ajax({
+            url: '/compute/', //调用django服务器计算函数
+            type: 'POST', //请求类型
+            data: {
+               'code': $('#txt_code').val()
+            }, //将获取文本框中的公式
+            dataType: 'json', //期望获得的响应类型为json
+            async: true,
+            error: function (request) {
+               // console.log("Error!");
+               return;
+            },
+            success: ShowResult //在请求成功之后调用该回调函数输出结果
+         });
+         // console.log("leave compute function!");
+      }
+
+   </script>
+
+   <script>
+      function ShowResult(data) {
+         var x = document.getElementById('txt_code');
+         x.value = data['result'];
+      }
+
+      // using id, same as using onclick method
+      $('#lgbut_compute').click(function () {
+         $.ajax({
+            url: '/compute/', //调用django服务器计算函数
+            type: 'POST', //请求类型
+            data: {
+               'code': $('#txt_code').val()
+            }, //将获取文本框中的公式
+            dataType: 'json', //期望获得的响应类型为json
+            success: ShowResult //在请求成功之后调用该回调函数输出结果
+         })
+      })
+   </script>
+
+   </body>
+
+</html>

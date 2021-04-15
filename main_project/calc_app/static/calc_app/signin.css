@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.w {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.nav-top {
+    height: 60px;
+    /* border: 1px solid black; */
+    background-color: pink;
+}
+
+.nav-logo {
+    display: inline;
+    float: left;
+    text-align: center;
+    padding-top: 8px;
+    width: 90px;
+    height: 48px;
+    /* background-color: skyblue; */
+
+}
+
+.search-form {
+    display: inline;
+    float: left;
+    margin-left: 100px;
+    padding-top: 8px;
+    width: 300px;
+    height: 40px;
+    /* background-color: skyblue; */
+}
+
+.search-form input {
+    display: inline;
+    float: left;
+    width: 250px;
+    height: 30px;
+    margin-top: 8px;
+    /* padding-top: 5px; */
+}
+
+.search-form button {
+    display: inline;
+    float:right;
+    margin-top: 8px;
+    height: 30px;
+    /* padding-top: 5px; */
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.sign-in-wrapper {
+    width: 200px;
+    height: 80px;
+    background-color: hotpink;
+}

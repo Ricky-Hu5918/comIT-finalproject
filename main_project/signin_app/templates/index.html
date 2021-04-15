@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
+    <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
+</head>
+<body>
+    <!-- header start -->
+    <div class="nav-top w">
+        <div class="nav-logo">
+            <a class="nav-logo-icon" href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
+            </a>
+            <span class="nav-logo-label">
+                <a href="{% url 'index' %}">Tools&Games</a>
+            </span>
+
+        </div>
+
+        <div class="search-form">
+            <form class="" action="https://Google.com/search" method="GET" target="_blank">
+                <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q" >
+                <button class="" type="submit" name="btnK" >Search</button>
+            </form>
+        </div>
+
+        <div class="nav-right">
+            {% if request.user.username != '' %}
+                <span class="nav-hello">
+                    Hello, {{ request.user.username }}!
+                </span>
+
+                <span class="sign-out-label">
+                    <a href="{% url 'signout' %}" id="signout">Sign Out</a>
+                </span>
+            {% else %}
+                <span class="sign-in-label">
+                    <a href="{% url 'signin' %}">Sign In</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    <!-- header end -->
+
+
+</body>
+</html>
