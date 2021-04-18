@@ -309,11 +309,12 @@ label img {
 .guess-game-wrapper {
     display: inline;
     float: left;
-    height: 250px;
-    width: 200px;
+    height: 300px;
+    width: 270px;
     border: 1px solid black;
     margin-left: 5px;
 }
+
 
 .rsp-game-wrapper {
     display: inline;
