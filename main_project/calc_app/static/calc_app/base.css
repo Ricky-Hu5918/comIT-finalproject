@@ -268,3 +268,68 @@ label img {
 }
 
 /* ----------calculator css end-----------*/
+
+/* ---------games css start---------- */
+.game-wrapper {
+    height: 350px;
+    margin-top: 10px;
+    border: 1px solid pink;
+}
+
+.game-label {
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    background-color: skyblue;
+}
+
+.game-label a {
+    display: inline;
+}
+
+.game-label h3 {
+    display: inline;
+}
+
+.games {
+    height: 300px;
+    margin: 5px 50px;
+    border: 1px solid black;
+}
+
+.games-pic-wrapper {
+    display:inline;
+    float: left;
+    height: 250px;
+    width: 200px;
+    border: 1px solid black;
+}
+
+.guess-game-wrapper {
+    display: inline;
+    float: left;
+    height: 250px;
+    width: 200px;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+
+.rsp-game-wrapper {
+    display: inline;
+    float: left;
+    height: 250px;
+    width: 200px;
+    border: 1px solid black;
+    margin-left: 50px;
+}
+/* ----------games css end---------- */
+
+/* ----------footer css start---------- */
+.foot-wrapper {
+    height: 60px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: pink;
+}
+
+/* ----------footer css end----------*/
