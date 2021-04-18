@@ -5,8 +5,8 @@
 
 /* body {
     /* using relative path, relative to css file */
-    background: url("../img/bd.jpg");
-} */
+    /* background: url("../img/bd.jpg"); */
+/* } */ 
 
 .frame {
     text-align: center;

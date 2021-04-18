@@ -293,16 +293,17 @@ label img {
 
 .games {
     height: 300px;
-    margin: 5px 50px;
+    margin: 5px auto;
     border: 1px solid black;
 }
 
 .games-pic-wrapper {
     display:inline;
     float: left;
-    height: 250px;
-    width: 200px;
+    height: 300px;
+    width: 220px;
     border: 1px solid black;
+    background: url('../img/magic.jpeg') no-repeat;
 }
 
 .guess-game-wrapper {
