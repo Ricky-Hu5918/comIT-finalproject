@@ -10,15 +10,6 @@ from django.views.decorators.http import require_POST
 def calcPage(request):  # calculator page
     return render(request, 'calcpage.html')
 
-def basePage(request):
-    return render(request, 'base.html')
-
-# def signin(request):
-#     return render(request, 'signIn.html')
-
-# def signup(request):
-#     return render(request, 'signUp.html')
-
 def run_code(code):
     try:
         code = 'print(' + code + ')'

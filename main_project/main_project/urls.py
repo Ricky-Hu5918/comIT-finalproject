@@ -16,14 +16,14 @@ Including another URLconf
 from os import name
 from django.contrib import admin
 from django.urls import path
-# from calc_app import views
+from calc_app import views
 # from signin_app import views
 from signin_app.views import SignInView, HomeView, SignUpView, SignOutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('calcpage/', views.calcPage),
-    # path('compute/', views.compute),
+    path('compute/', views.compute),
     # path('index/calcpage.html', views.calcPage),
     # path('index/', views.home, name='index'),
     path('index/', HomeView.as_view(), name='index'),
