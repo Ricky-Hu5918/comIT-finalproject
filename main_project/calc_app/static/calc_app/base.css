@@ -84,8 +84,7 @@ a {
     margin-right: 50px;
 }
 
-
-/* signin css start */
+/* ----------signin css start---------- */
 .sign-in-wrapper {
     width: 348px;
     height: 279px;
@@ -222,9 +221,9 @@ label img {
     background-color: #06b45a;
     border-radius: 10px;
 }
-/* signin css end */
+/* ----------signin css end---------- */
 
-/* signup css start */
+/* ----------signup css start---------- */
 .signup_form {
     width: 340px;
     height: 338px;
@@ -236,4 +235,36 @@ label img {
     box-shadow: 3px 3px 10px;
 }
 
-/* signup css end */
+/* ----------signup css end---------- */
+
+/* ----------calculator css start----------*/
+.cal-wrapper {
+    height: 500px;
+    margin-top: 10px;
+    border: 1px solid pink;
+}
+
+.tools-label {
+    text-align: center;
+    height: 25px;
+    padding-top: 5px;
+    background-color:skyblue;
+
+}
+
+.tools-label a {
+    display: inline;
+}
+
+.tools-label h3 {
+    display: inline;
+}
+
+.calculator {
+    height: 400px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+/* ----------calculator css end-----------*/
