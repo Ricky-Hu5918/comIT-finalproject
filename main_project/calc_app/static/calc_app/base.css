@@ -319,8 +319,8 @@ label img {
 .rsp-game-wrapper {
     display: inline;
     float: left;
-    height: 250px;
-    width: 200px;
+    height: 300px;
+    width: 384px;
     border: 1px solid black;
     margin-left: 50px;
 }
