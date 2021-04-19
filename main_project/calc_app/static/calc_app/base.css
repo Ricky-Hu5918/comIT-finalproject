@@ -326,19 +326,94 @@ label img {
 }
 /* ----------games css end---------- */
 
-/* ----------footer css start---------- */
+/* ----------index footer css start---------- */
 .foot-wrapper {
     height: 60px;
+    width: 500px;
     margin-top: 10px;
     margin-bottom: 5px;
     background-color: pink;
 }
 
-/* ----------footer css end----------*/
+/* ----------index footer css end----------*/
 
 /* ----------guess game css start---------- */
 .guess-form-wrapper {
     text-align: center;
+    height: 500px;
+    margin: 20px auto;
+    border: 1px solid grey;
+    border-radius: 10px;
 }
 
+.form-title {
+    height: 100px;
+    width: 500px;
+    margin: 20px auto;
+
+    /* background-color: skyblue; */
+}
+.form-title h2 {
+    margin: 5px auto;
+    border-bottom: 1px solid grey;
+}
+
+.game-description {
+    color: grey;
+    text-align: left;
+}
+.game-description h4 {
+    color: grey;
+}
+
+.guess-input-area {
+    margin: 30px auto;
+}
+
+.guess-input-area input {
+    width: 398px;
+    height: 25px;
+}
+
+.result-part {
+    height: 50px;
+    width: 400px;
+    text-align: left;
+    margin: 20px auto;
+    /* border: 1px solid pink; */
+}
+
+.times-part {
+    height: 50px;
+    width: 400px;
+    text-align: left;
+    margin: 20px auto;
+    /* border: 1px solid pink; */
+}
+
+.input-part {
+    height: 50px;
+    width: 400px;
+    text-align: left;
+    margin: 20px auto;
+    /* border: 1px solid pink; */
+}
+.guess-button {
+    margin: 20px;
+    /* margin-left: 0px; */
+    width: 180px;
+    height: 25px;
+}
+.reset-button {
+    margin: 20px;
+    /* margin-right: 0px; */
+    width: 180px;
+    height: 25px;
+}
+
+.guess-footer {
+    color: grey;
+    text-align: center;
+    margin: 20px auto;
+}
 /* ----------guess game css end--------- */

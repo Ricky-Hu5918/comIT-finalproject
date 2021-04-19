@@ -52,35 +52,40 @@
             <h2>Guess Game</h2>
             <div class="game-description">
                 <h4>How to play?</h4>
-                <p>To guess by inputting a number between 1-100, see how many times you can guess the number created randomly by computer.</p>
+                <p>To guess by entering a number between 1-100, see how many times you can guess the number created randomly by computer.</p>
             </div>
         </div>
 
         <div>
-            <form class="guess-input-area" >
-                <span>Input a number(1-100):</span>
-                <div>
-                    <input type="text" id="guess_number" />
-                </div>
-
-                <span>Result:</span>
-                <div>
+            <form class="guess-input-area w" >
+                
+                <div class="result-part">
+                    <h3>Result:</h3>
                     <input type="text" id="guess_result" disabled/>
                 </div>
-
-                <span>Times you guessed:</span>
-                <div>
+                
+                <div class="times-part">
+                    <h3>Times you guessed:</h3>
                     <input type="number" id="guessed_times" value="0" disabled/>
+                </div>
+                
+                <div class="input-part">
+                    <h3>Input a number(1-100):</h3>
+                    <input type="text" id="guess_number" />
                 </div>
 
                 <div>
                     <!-- attention: if set type=submit, then the return of ajax will refresh the whole page! -->
-                    <button type="button" id="Guess" onclick="fun_guess()">Submit</button>
-                    <button type="button" onclick="fun_reset()">Reset</button>  
+                    <button class="guess-button" type="button" id="Guess" onclick="fun_guess()">Submit</button>
+                    <button class="reset-button" type="button" onclick="fun_reset()">Reset</button>  
                 </div>
             </form>
         </div>
     </div>
+
+    <footer class="guess-footer w">
+        <h4>Copyright @2021</h4>
+    </footer>
 
     <script>
         // enable csrf_token
