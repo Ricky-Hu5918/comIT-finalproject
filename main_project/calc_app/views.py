@@ -3,12 +3,9 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
 from django.views.decorators.http import require_POST
-
+from django.views.generic.base import TemplateView
 
 # Create your views here.
-
-def calcPage(request):  # calculator page
-    return render(request, 'calcpage.html')
 
 def run_code(code):
     try:
@@ -28,5 +25,5 @@ def compute(request):
     result = run_code(code)
     return JsonResponse(data={'result': result})
 
-def index(request):
-    return render(request, 'index.html')
+
+

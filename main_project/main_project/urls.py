@@ -18,19 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from calc_app import views
 # from signin_app import views
-from signin_app.views import SignInView, HomeView, SignUpView, SignOutView
+from signin_app.views import SignInView, HomeView, SignUpView, SignOutView, GuesspageView, Guess
+# from calc_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('calcpage/', views.calcPage),
     path('compute/', views.compute),
-    # path('index/calcpage.html', views.calcPage),
-    # path('index/', views.home, name='index'),
+    path('guesspage/', GuesspageView.as_view(), name='guesspage'),
+    path('guess/', Guess.as_view(), name='guess'),
     path('index/', HomeView.as_view(), name='index'),
-    # path('signIn/', views.signin, name='signin'),
     path('signIn/', SignInView.as_view(), name='signin'),
-    # path('signUp/', views.signup, name='signup'),
     path('signUp/', SignUpView.as_view(), name='signup'),
-    # path('signout/', views.signout, name='signout'),
     path('signout/', SignOutView.as_view(), name='signout'),
 ]

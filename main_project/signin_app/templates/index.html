@@ -68,7 +68,7 @@
                 <div class="clearplusequal">
                    <button type="button" class="btn btn-success btn-lg btn_clear" id="lgbut_clear"
                       onclick="fun_clear()">Clear</button>
-                   <button type="button" class="btn btn-primary btn-lg btn_compute" id="lgbut_compute" onclick="fun_compute()"">=</button>
+                   <button type="button" class="btn btn-primary btn-lg btn_compute" id="lgbut_compute" onclick="fun_compute()">=</button>
                 </div>
        
                 <div class=" numbers">
@@ -233,7 +233,7 @@
             <div class="guess-game-wrapper">
                 <h3>Guess Number Game</h3>
             </br>
-                <a href="#">
+                <a href="{% url 'guesspage' %}">
                     <img src="{% static 'img/guess.jpeg' %}" alt="guess number game pic">
                 </a>
             </br>

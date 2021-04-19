@@ -335,3 +335,10 @@ label img {
 }
 
 /* ----------footer css end----------*/
+
+/* ----------guess game css start---------- */
+.guess-form-wrapper {
+    text-align: center;
+}
+
+/* ----------guess game css end--------- */

@@ -1,5 +1,5 @@
 from typing import ContextManager
-from django.http import request, HttpResponseRedirect
+from django.http import request, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, AnonymousUser
@@ -65,3 +65,44 @@ class SignOutView(View):
         return redirect('/index/')
 
 
+# class GuesspageView(TemplateView):
+class GuesspageView(View):
+    # guess page
+    # template_name = 'guesspage.html'
+
+    # def get_context_data(self, **kwargs):
+    #     return super().get_context_data(**kwargs)
+    
+    def get(self, request):
+        return render(request, 'guesspage.html')
+    
+    def post(self, request):
+        pass
+
+class Guess(View):
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        # if request.method == 'POST' and request.POST:
+        guess_num = int(request.POST.get('guess_number'))
+        random_num = int(request.POST.get('random_number'))
+        times = int(request.POST.get('times_value'))
+
+        times = times + 1
+
+        if (guess_num > random_num):
+            res = 'You guessed too High!'
+        elif (guess_num < random_num):
+            res = 'You guessed too Low!'
+        else:
+            res = 'Congrats! You guessed Right!'
+        
+        data = {
+            'guess_num': guess_num,
+            'result': res,
+            'times': times
+        }
+
+        return JsonResponse(data, json_dumps_params={'ensure_ascii':False})
+        # return JsonResponse(data={'data': data}) #it can only pass one data
