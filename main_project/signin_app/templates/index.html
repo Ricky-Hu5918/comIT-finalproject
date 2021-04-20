@@ -261,33 +261,53 @@
         </div>
 
         <!-- repeat start -->
-     <div class="games">
-         <div class="games-pic-wrapper">
+     <div class="madlibs-games">
+         <div class="madlibs-games-pic-wrapper">
          </div>
-         <div class="guess-game-wrapper">
-            <h3>Guess Number Game</h3>
+         <div class="madlibs-game-wrapper">
+            <h3>Mad Libs Game</h3>
             </br>
-            <a href="{% url 'guesspage' %}">
-               <img src="{% static 'img/guess.jpeg' %}" alt="guess number game pic">
-            </a>
-            </br>
+            <p>
+               Mad Libs is a phrasal template word game which consists of one player prompting others for a list of words to substitute for blanks in a story before reading aloud.
+            </p>
+            <br>
+            <p>
+               Mad Libs was invented in 1953 by Leonard Stern and Roger Price.Stern and Price co-created the game, but could not agree on a name for their invention.No name was chosen until five years later (1958), when Stern and Price were eating Eggs Benedict at a restaurant in New York City. While eating, the two overheard an argument at a neighboring table between a talent agent and an actor.According to Price and Stern, during the overheard argument, the actor said that he wanted to "ad-lib" an upcoming interview. The agent, who clearly disagreed with the actor's suggestion, retorted that ad-libbing an interview would be "mad".
+            </p>
+            <br>
+            <p>
+               Stern and Price used that eavesdropped conversation to create, at length, the name "Mad Libs".
+            </p>
 
-            <span>
-               <p>Smart enough? Try to guess a number with the minimum number of times.</p>
-            </span>
          </div>
-    
-         <div class="rsp-game-wrapper">
-             <h3>More games ......</h3>
+         <div class="madlibs-game-link-wrapper">
+            <a href="madlibsgame.html">
+               <img src="{% static 'img/madlibs.jpeg' %}" title="">
+            </a>
+            <br>
+            <br>
+            <p>
+               Play the Mad Libs game and try to enjoy yourself!
+            </p>
+         </div>    
+
+     </div>
+      <!-- repeat end -->
+
+      <!-- repeat 2 start -->
+      <div class="games">
+      <div class="games-pic-wrapper">
+      </div>
+      <div class="more-game-wrapper">
+         <h3>More games ......</h3>
          </br>
          <a href="#">
-             <img src="{% static 'img/moregames.jpeg' %}" title="more games will be provided soon...">
+            <img src="{% static 'img/moregames.jpeg' %}" alt="guess number game pic">
          </a>
-         </br>
+      </div>
 
-         </div>
-     </div>
-        <!-- repeat end -->
+      </div>
+      <!-- repeat 2 end -->
 
      </div>
     <!-- games part end -->

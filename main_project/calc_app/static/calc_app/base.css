@@ -271,7 +271,7 @@ a {
 
 /* ---------games css start---------- */
 .game-wrapper {
-    height: 680px;
+    height: 1100px;
     margin-top: 10px;
     border: 1px solid pink;
 }
@@ -295,7 +295,8 @@ a {
     height: 300px;
     margin-top: 10px;
     margin-bottom: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-bottom: 1px dotted grey;
 }
 
 .games-pic-wrapper {
@@ -335,7 +336,7 @@ p:hover {
     margin-top: 5px;
 }
 .guess-game-wrapper a img:hover {
-    filter: blur(3px);
+    filter: blur(2px);
 }
 
 .rsp-game-wrapper {
@@ -356,7 +357,78 @@ p:hover {
 }
 
 .rsp-game-wrapper a img:hover {
-    filter: blur(3px);
+    filter: blur(2px);
+}
+
+/* for madlibs game start */
+.madlibs-games {
+    height: 410px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* border: 1px solid black; */
+    border-bottom: 1px dotted grey;
+}
+
+.madlibs-games-pic-wrapper {
+    display:inline;
+    float: left;
+    height: 410px;
+    width: 120px;
+    /* border: 1px solid black; */
+    /* background: url('../img/magic.jpeg') no-repeat; */
+}
+
+.madlibs-game-wrapper {
+    display: inline;
+    float: left;
+    height: 410px;
+    width: 425px;
+    /* border: 1px solid grey; */
+    margin-left: 5px;
+    /* text-align: center; */
+}
+
+.madlibs-game-wrapper h3 {
+    padding-left: 15px;
+}
+
+.madlibs-game-wrapper p {
+    padding-left: 15px;
+}
+
+.madlibs-game-link-wrapper {
+    text-align: center;
+}
+
+.madlibs-game-link-wrapper img {
+    padding-top: 50px;
+}
+
+.madlibs-game-link-wrapper img:hover {
+    filter: blur(2px);
+}
+/* for madlibs game end */
+
+.more-game-wrapper {
+    display: inline;
+    float: left;
+    height: 300px;
+    width: 400px;
+    /* border: 1px solid grey; */
+    margin-left: 5px;
+}
+.more-game-wrapper h3 {
+    /* text-align: center; */
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.more-game-wrapper img {
+    margin-left: 15px;
+}
+
+.more-game-wrapper a img:hover {
+    filter: blur(5px);
 }
 /* ----------games css end---------- */
 
