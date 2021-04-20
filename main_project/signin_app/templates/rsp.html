@@ -78,15 +78,15 @@
                     <h3>Choose your best offer:</h3>
                     <div class="rspgame-radio-box">
                         <div class="rspgame-check-box">
-                            <input type="radio" name="user-offer" id="rock"/>
+                            <input type="radio" name="user-offer" value="rock" id="rock"/>
                             <label for="rock">Rock</label>
                         </div>
                         <div class="rspgame-check-box">
-                            <input type="radio" name="user-offer" id="scissor"/>
+                            <input type="radio" name="user-offer" value="scissor" id="scissor"/>
                             <label for="scissor">Scissor</label>
                         </div>
                         <div class="rspgame-check-box">
-                            <input type="radio" name="user-offer" id="paper"/>
+                            <input type="radio" name="user-offer" value="paper" id="paper"/>
                             <label for="paper">Paper</label>
                         </div>
                     </div> 
@@ -94,7 +94,7 @@
 
                 <div>
                     <!-- attention: if set type=submit, then the return of ajax will refresh the whole page! -->
-                    <button class="rspgame-pk-button" type="button" id="pk" onclick="fun_guess()">PK</button>
+                    <button class="rspgame-pk-button" type="button" id="pk" onclick="fun_pk()">PK</button>
                 </div>
             </form>
         </div>
@@ -105,57 +105,43 @@
     </footer>
 
     <script>
-        // enable csrf_token
-        $.ajaxSetup({
-           data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
-        });
+        var res = document.getElementById('pk_result');
+        var pk_times = document.getElementById('pk_times');
+        var won_times = document.getElementById('won_times');
+        var pk = 0;
+        var won = 0;
 
-        var num = document.getElementById('guess_number');
-        var res = document.getElementById('guess_result');
-        var times = document.getElementById('guessed_times');
+        function fun_pk() {
+            var robj = document.getElementsByName("user-offer");
+            var user_offer = 'None';
 
-        var random_num = Math.floor(Math.random() * 100) + 1;
-
-        function fun_reset() {
-            num.value = '';
-            res.value = '';
-            times.value = '0';
-            random_num = Math.floor(Math.random() * 100) + 1;
-        }
-
-        function GetResult(data) {
-            // console.log("enter GetResult function!");
-            num.value = data['guess_num'];
-            res.value = data['result'];
-            times.value = data['times'];
-            // console.log(num.value, res.value, times.value);
-            if (res.value == 'Congrats! You guessed Right!')
+            pk += 1;
+            for (var i=0; i<robj.length; i++)
             {
-                alert("Well done! You're SMART enough!");
-                //get another random number after guessed successfully
-                random_num = Math.floor(Math.random() * 100) + 1;
+                if (robj[i].checked){
+                    user_offer = robj[i].value;
+                    break;
+                }
             }
 
-        }
+            if (user_offer == 'None'){
+                alert("Please Choose your best offer!")
+            }
 
-        function fun_guess() {
-            // console.log("enter guess function!");
-            $.ajax({
-                url: '/guess/', 
-                type: 'POST', //请求类型
-                data: {
-                    'guess_number': $('#guess_number').val(),
-                    'random_number': random_num,
-                    'times_value': $('#guessed_times').val(),
-                }, 
-                dataType: 'json', //期望获得的响应类型为json
-                error: function (request) {
-                    // console.log("Error!");
-                    return;
-                },
-                success: GetResult //在请求成功之后调用该回调函数输出结果
-            });
-            // console.log("leave guess function!");
+            var random_num = Math.floor(Math.random() * 3);
+            console.log(random_num);
+            var computer_offer = ['rock', 'scissor', 'paper'];
+            //rock>scissor, scissor>paper, paper>rock
+            if ((user_offer == 'rock' && computer_offer[random_num] == 'scissor') || (user_offer == 'scissor' && computer_offer[random_num] == 'paper') || (user_offer == 'paper' && computer_offer[random_num] == 'rock')){
+                won += 1;
+                res.value = 'Congrats, You won!'
+            }
+            else {
+                res.value = 'Sorry, You lose!'
+            }
+
+            pk_times.value = pk;
+            won_times.value = won;
         }
 
     </script>
