@@ -352,6 +352,7 @@ label img {
 
 /* ----------index footer css end----------*/
 
+
 /* ----------guess game css start---------- */
 .guess-form-wrapper {
     text-align: center;
@@ -432,3 +433,84 @@ label img {
     margin: 20px auto;
 }
 /* ----------guess game css end--------- */
+
+/* ----------rsp game css start--------- */
+.rspgame-form-wrapper {
+    text-align: center;
+    height: 530px;
+    margin: 20px auto;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.rspgame-form-title {
+    height: 100px;
+    width: 500px;
+    margin: 20px auto;
+
+    /* background-color: skyblue; */
+}
+.rspgame-form-title h2 {
+    margin: 5px auto;
+    border-bottom: 1px solid grey;
+}
+
+.rspgame-description {
+    color: grey;
+    text-align: left;
+}
+.rspgame-description h4 {
+    color: grey;
+}
+
+.rspgame-result-part {
+    height: 50px;
+    width: 400px;
+    text-align: left;
+    margin: 20px auto;
+    /* border: 1px solid pink; */
+}
+.rspgame-result-part input {
+    width: 398px;
+    height: 25px;
+}
+.rspgame-times-part {
+    height: 50px;
+    width: 400px;
+    text-align: left;
+    margin: 20px auto;
+    /* border: 1px solid pink; */
+}
+.rspgame-times-part input {
+    width: 398px;
+    height: 25px;
+}
+.rspgame-input-part {
+    height: 60px;
+    width: 400px;
+    text-align: left;
+    margin: 30px auto;
+    border: 1px solid rgb(203, 203, 203);
+}
+.rspgame-input-part h3 {
+    text-align: left;
+}
+
+.rspgame-radio-box {
+    display: inline;
+}
+
+.rspgame-check-box {
+    display: inline;
+    float: left;
+    height: 25px;
+    margin: 5px 30px;
+}
+
+.rspgame-pk-button {
+    margin: 20px;
+    /* margin-left: 0px; */
+    width: 400px;
+    height: 25px;
+}
+/* ----------rsp game css end---------- */

@@ -48,40 +48,53 @@
     <!-- header end -->
 
     <div class="rspgame-form-wrapper w">
-        <div class="form-title">
+        <div class="rspgame-form-title">
             <h2>RSP Game</h2>
             <div class="rspgame-description">
                 <h4>How to play?</h4>
-                <p>This is a Rock, Scissor, Paper game. Choose one and beat the computer!</p>
+                <p>Choose your best offer from Rock, Scissor, Paper and beat the computer!</p>
             </div>
         </div>
 
         <div>
             <form class="rspgame-input-area w" >
                 
-                <div class="result-part">
+                <div class="rspgame-result-part">
                     <h3>Result:</h3>
-                    <input type="text" id="guess_result" disabled/>
+                    <input type="text" id="pk_result" disabled/>
                 </div>
                 
-                <div class="times-part">
+                <div class="rspgame-times-part">
                     <h3>Times you played:</h3>
-                    <input type="number" id="guessed_times" value="0" disabled/>
+                    <input type="number" id="pk_times" value="0" disabled/>
                 </div>
-                
-                <div class="input-part">
+
+                <div class="rspgame-times-part">
+                    <h3>Times you won:</h3>
+                    <input type="number" id="won_times" value="0" disabled/>
+                </div>
+
+                <div class="rspgame-input-part">
                     <h3>Choose your best offer:</h3>
-                    <input type="radio" name="user-offer" id="rock"  /> <label for="rock">Rock</label>
-                </br>
-                    <input type="radio" name="user-offer" id="scissor" /> <label for="scissor">Scissor</label>
-                </br>
-                    <input type="radio" name="user-offer" id="paper" /> <label for="paper">Paper</label>
+                    <div class="rspgame-radio-box">
+                        <div class="rspgame-check-box">
+                            <input type="radio" name="user-offer" id="rock"/>
+                            <label for="rock">Rock</label>
+                        </div>
+                        <div class="rspgame-check-box">
+                            <input type="radio" name="user-offer" id="scissor"/>
+                            <label for="scissor">Scissor</label>
+                        </div>
+                        <div class="rspgame-check-box">
+                            <input type="radio" name="user-offer" id="paper"/>
+                            <label for="paper">Paper</label>
+                        </div>
+                    </div> 
                 </div>
 
                 <div>
                     <!-- attention: if set type=submit, then the return of ajax will refresh the whole page! -->
-                    <button class="guess-button" type="button" id="Guess" onclick="fun_guess()">Submit</button>
-                    <button class="reset-button" type="button" onclick="fun_reset()">Reset</button>  
+                    <button class="rspgame-pk-button" type="button" id="pk" onclick="fun_guess()">PK</button>
                 </div>
             </form>
         </div>
