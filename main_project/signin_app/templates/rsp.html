@@ -95,6 +95,7 @@
                 <div>
                     <!-- attention: if set type=submit, then the return of ajax will refresh the whole page! -->
                     <button class="rspgame-pk-button" type="button" id="pk" onclick="fun_pk()">PK</button>
+                    <button class="reset-button" type="button" onclick="fun_reset()">Reset</button> 
                 </div>
             </form>
         </div>
@@ -142,6 +143,24 @@
 
             pk_times.value = pk;
             won_times.value = won;
+        }
+
+        function fun_reset() {
+            var robj = document.getElementsByName("user-offer");
+
+            for (var i=0; i<robj.length; i++)
+            {
+                if (robj[i].checked){
+                    robj[i].checked = false;
+                    break;
+                }
+            }
+
+            res.value = '';
+            pk_times.value = '0';
+            pk = 0;
+            won_times.value = '0';
+            won = 0;
         }
 
     </script>
