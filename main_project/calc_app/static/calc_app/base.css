@@ -185,10 +185,10 @@ label img {
 .login_help a {
     float: right;
     color: #7e8081;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
-.login_help a:hover {
+a {
     text-decoration: underline;
 }
 
@@ -271,7 +271,7 @@ label img {
 
 /* ---------games css start---------- */
 .game-wrapper {
-    height: 350px;
+    height: 680px;
     margin-top: 10px;
     border: 1px solid pink;
 }
@@ -293,7 +293,8 @@ label img {
 
 .games {
     height: 300px;
-    margin: 5px auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
     border: 1px solid black;
 }
 
@@ -301,22 +302,37 @@ label img {
     display:inline;
     float: left;
     height: 300px;
-    width: 220px;
-    border: 1px solid black;
-    background: url('../img/magic.jpeg') no-repeat;
+    width: 120px;
+    /* border: 1px solid black; */
+    /* background: url('../img/magic.jpeg') no-repeat; */
 }
 
 .guess-game-wrapper {
     display: inline;
     float: left;
     height: 300px;
-    width: 270px;
-    border: 1px solid black;
+    width: 300px;
+    /* border: 1px solid grey; */
     margin-left: 5px;
+    /* text-align: center; */
 }
+
+.guess-game-wrapper img {
+    margin-left: 15px;
+}
+
+.guess-game-wrapper p {
+    margin-left: 15px;
+}
+
+p:hover {
+    color: hotpink;
+}
+
 .guess-game-wrapper h3 {
-    text-align: center;
-    margin-top: 10px;
+    /* text-align: center; */
+    margin-left: 15px;
+    margin-top: 5px;
 }
 .guess-game-wrapper a img:hover {
     filter: blur(3px);
@@ -327,13 +343,16 @@ label img {
     float: left;
     height: 300px;
     width: 384px;
-    border: 1px solid black;
-    margin-left: 50px;
+    /* border: 1px solid black; */
+    margin-left: 120px;
 }
 
 .rsp-game-wrapper h3 {
-    text-align: center;
-    margin-top: 10px;
+    margin-top: 5px;
+}
+
+.rsp-game-wrapper a {
+    margin-bottom: 10px;
 }
 
 .rsp-game-wrapper a img:hover {
@@ -344,12 +363,29 @@ label img {
 /* ----------index footer css start---------- */
 .foot-wrapper {
     height: 60px;
-    width: 500px;
+    width: 1000px;
+    /* text-align: center; */
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     background-color: pink;
 }
 
+.footer-content {
+    height: 30px;
+    width: 300px;
+    padding-top: 20px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+}
+
+.footer-content span {
+    margin: 0 20px;
+}
+
+a:hover {
+    font-style: italic;
+    text-decoration: none;
+}
 /* ----------index footer css end----------*/
 
 
