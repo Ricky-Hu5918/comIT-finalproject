@@ -106,3 +106,11 @@ class Guess(View):
 
         return JsonResponse(data, json_dumps_params={'ensure_ascii':False})
         # return JsonResponse(data={'data': data}) #it can only pass one data
+
+class RsppageView(View):
+    def get(self, request):
+        return render(request, 'rsp.html')
+
+class RspView(View):
+    def post(self, request):
+        pass

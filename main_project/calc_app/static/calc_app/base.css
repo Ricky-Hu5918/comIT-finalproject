@@ -314,7 +314,13 @@ label img {
     border: 1px solid black;
     margin-left: 5px;
 }
-
+.guess-game-wrapper h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+.guess-game-wrapper a img:hover {
+    filter: blur(3px);
+}
 
 .rsp-game-wrapper {
     display: inline;
@@ -323,6 +329,15 @@ label img {
     width: 384px;
     border: 1px solid black;
     margin-left: 50px;
+}
+
+.rsp-game-wrapper h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.rsp-game-wrapper a img:hover {
+    filter: blur(3px);
 }
 /* ----------games css end---------- */
 

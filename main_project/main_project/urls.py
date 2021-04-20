@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from calc_app import views
 # from signin_app import views
-from signin_app.views import SignInView, HomeView, SignUpView, SignOutView, GuesspageView, Guess
+from signin_app.views import SignInView, HomeView, SignUpView, SignOutView, GuesspageView, Guess, RspView, RsppageView
 # from calc_app import views
 
 urlpatterns = [
@@ -31,4 +31,6 @@ urlpatterns = [
     path('signIn/', SignInView.as_view(), name='signin'),
     path('signUp/', SignUpView.as_view(), name='signup'),
     path('signout/', SignOutView.as_view(), name='signout'),
+    path('rsppage/', RsppageView.as_view(), name='rsppage'),
+    path('rsp/', RspView.as_view(), name='rspgame'),
 ]

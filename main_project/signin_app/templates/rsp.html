@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSP Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
+    <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <!-- header start -->
+    <div class="nav-top w">
+        <div class="nav-logo">
+            <a class="nav-logo-icon" href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
+            </a>
+            <span class="nav-logo-label">
+                <a href="{% url 'index' %}">Tools&Games</a>
+            </span>
+
+        </div>
+
+        <div class="search-form">
+            <form class="" action="https://Google.com/search" method="GET" target="_blank">
+                <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q" >
+                <button class="" type="submit" name="btnK" >Search</button>
+            </form>
+        </div>
+
+        <div class="nav-right">
+            {% if request.user.username != '' %}
+                <span class="nav-hello">
+                    Hello, {{ request.user.username }}!
+                </span>
+
+                <span class="sign-out-label">
+                    <a href="{% url 'signout' %}" id="signout">Sign Out</a>
+                </span>
+            {% else %}
+                <span class="sign-in-label">
+                    <a href="{% url 'signin' %}">Sign In</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    <!-- header end -->
+
+    <div class="rspgame-form-wrapper w">
+        <div class="form-title">
+            <h2>RSP Game</h2>
+            <div class="rspgame-description">
+                <h4>How to play?</h4>
+                <p>This is a Rock, Scissor, Paper game. Choose one and beat the computer!</p>
+            </div>
+        </div>
+
+        <div>
+            <form class="rspgame-input-area w" >
+                
+                <div class="result-part">
+                    <h3>Result:</h3>
+                    <input type="text" id="guess_result" disabled/>
+                </div>
+                
+                <div class="times-part">
+                    <h3>Times you played:</h3>
+                    <input type="number" id="guessed_times" value="0" disabled/>
+                </div>
+                
+                <div class="input-part">
+                    <h3>Choose your best offer:</h3>
+                    <input type="radio" name="user-offer" id="rock"  /> <label for="rock">Rock</label>
+                </br>
+                    <input type="radio" name="user-offer" id="scissor" /> <label for="scissor">Scissor</label>
+                </br>
+                    <input type="radio" name="user-offer" id="paper" /> <label for="paper">Paper</label>
+                </div>
+
+                <div>
+                    <!-- attention: if set type=submit, then the return of ajax will refresh the whole page! -->
+                    <button class="guess-button" type="button" id="Guess" onclick="fun_guess()">Submit</button>
+                    <button class="reset-button" type="button" onclick="fun_reset()">Reset</button>  
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="guess-footer w">
+        <h4>Copyright @2021</h4>
+    </footer>
+
+    <script>
+        // enable csrf_token
+        $.ajaxSetup({
+           data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+        });
+
+        var num = document.getElementById('guess_number');
+        var res = document.getElementById('guess_result');
+        var times = document.getElementById('guessed_times');
+
+        var random_num = Math.floor(Math.random() * 100) + 1;
+
+        function fun_reset() {
+            num.value = '';
+            res.value = '';
+            times.value = '0';
+            random_num = Math.floor(Math.random() * 100) + 1;
+        }
+
+        function GetResult(data) {
+            // console.log("enter GetResult function!");
+            num.value = data['guess_num'];
+            res.value = data['result'];
+            times.value = data['times'];
+            // console.log(num.value, res.value, times.value);
+            if (res.value == 'Congrats! You guessed Right!')
+            {
+                alert("Well done! You're SMART enough!");
+                //get another random number after guessed successfully
+                random_num = Math.floor(Math.random() * 100) + 1;
+            }
+
+        }
+
+        function fun_guess() {
+            // console.log("enter guess function!");
+            $.ajax({
+                url: '/guess/', 
+                type: 'POST', //请求类型
+                data: {
+                    'guess_number': $('#guess_number').val(),
+                    'random_number': random_num,
+                    'times_value': $('#guessed_times').val(),
+                }, 
+                dataType: 'json', //期望获得的响应类型为json
+                error: function (request) {
+                    // console.log("Error!");
+                    return;
+                },
+                success: GetResult //在请求成功之后调用该回调函数输出结果
+            });
+            // console.log("leave guess function!");
+        }
+
+    </script>
+
+
+</body>
+</html>

@@ -221,9 +221,10 @@
     <!-- games part start -->
      <div class="game-wrapper w">
         <div class="game-label">
-            <a>
-                <img src="{% static 'img/games.png' %}" alt="" width="23" height="20" class="">
-            </a>
+            
+            <!-- <a> -->
+            <img src="{% static 'img/games.png' %}" alt="" width="23" height="20" class="">
+            <!-- </a> -->
             <h3>Casual Games</h3>
         </div>
 
@@ -237,20 +238,24 @@
                     <img src="{% static 'img/guess.jpeg' %}" alt="guess number game pic">
                 </a>
             </br>
-            </br>
-            <p>Smart enough? Try to guess a number with the minimum number of times.</p>
+
+            <span>
+               <p>Smart enough? Try to guess a number with the minimum number of times.</p>
+            </span>
             </div>
        
             <div class="rsp-game-wrapper">
                 <h3>R.S.P Game</h3>
             </br>
-            <a href="#">
+            <a href="{% url 'rsppage' %}">
                 <img src="{% static 'img/rsp.gif' %}" alt="rsp game pic">
             </a>
             </br>
-            </br>
-            <p>Can you beat the computer?</p>
-            <p>Play the Rock Scissor Paper game with the computer and try your best to beat the computer!</p>
+
+            <span>
+               <p>Can you beat the computer?</p>
+               <p>Play the Rock Scissor Paper game with the computer and try your best to beat the computer!</p>
+            </span>
 
             </div>
         </div>
