@@ -1,254 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
-    <link rel="stylesheet" href="{% static '/calc_app/calcpage.css' %}" />
-    <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>index</title>
+   {% load static %}
+   <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
+   <link rel="stylesheet" href="{% static '/calc_app/calcpage.css' %}" />
+   <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
+   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
+
 <body>
-    <!-- header start -->
-    <div class="nav-top w">
-        <div class="nav-logo">
-            <a class="nav-logo-icon" href="{% url 'index' %}">
-                <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
-            </a>
-            <span class="nav-logo-label">
-                <a href="{% url 'index' %}">Tools&Games</a>
-            </span>
+   <!-- header start -->
+   <div class="nav-top w">
+      <div class="nav-logo">
+         <a class="nav-logo-icon" href="{% url 'index' %}">
+            <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
+         </a>
+         <span class="nav-logo-label">
+            <a href="{% url 'index' %}">Tools&Games</a>
+         </span>
+      </div>
 
-        </div>
+      <div class="search-form">
+         <form class="" action="https://Google.com/search" method="GET" target="_blank">
+            <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q">
+            <button class="" type="submit" name="btnK">Search</button>
+         </form>
+      </div>
 
-        <div class="search-form">
-            <form class="" action="https://Google.com/search" method="GET" target="_blank">
-                <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q" >
-                <button class="" type="submit" name="btnK" >Search</button>
-            </form>
-        </div>
+      <div class="nav-right">
+         {% if request.user.username != '' %}
+         <span class="nav-hello">
+            Hello, {{ request.user.username }}!
+         </span>
 
-        <div class="nav-right">
-            {% if request.user.username != '' %}
-                <span class="nav-hello">
-                    Hello, {{ request.user.username }}!
-                </span>
+         <span class="sign-out-label">
+            <a href="{% url 'signout' %}" id="signout">Sign Out</a>
+         </span>
+         {% else %}
+         <span class="sign-in-label">
+            <a href="{% url 'signin' %}">Sign In</a>
+         </span>
+         {% endif %}
+      </div>
+   </div>
+   <!-- header end -->
 
-                <span class="sign-out-label">
-                    <a href="{% url 'signout' %}" id="signout">Sign Out</a>
-                </span>
-            {% else %}
-                <span class="sign-in-label">
-                    <a href="{% url 'signin' %}">Sign In</a>
-                </span>
-            {% endif %}
-        </div>
-    </div>
-    <!-- header end -->
+   <!-- calculator part start -->
+   <div class="cal-wrapper w">
+      <div class="tools-label">
+         <a>
+            <img src="{% static 'img/tools.png' %}" alt="" width="23" height="20" class="">
+         </a>
+         <h3>Online Calculator</h3>
+      </div>
+      <p>Description: </p>
+      <p>
+         This is an online calcultor, which provides basic mathematical operations like addition, subtraction,
+         multiplication and division. You can enter an operation like this: 2+3*4/5.</p>
+      </p>
+      <div class="calculator">
+         <div class="computer ">
 
-    <!-- calculator part start -->
-    <div class="cal-wrapper w">
-        <div class="tools-label">
-            <a>
-                <img src="{% static 'img/tools.png' %}" alt="" width="23" height="20" class="">
-            </a>
-            <h3>Online Calculator</h3>
-        </div>
-        <p>Description: </p>
-        <p>
-            This is an online calcultor, which provides basic mathematical operations like addition, subtraction, multiplication and division. You can enter an operation like this: 2+3*4/5.</p>
-        </p>
-        <div class="calculator">
-            <div class="computer ">
+            <input type="text" id="txt_code" name="expression" value="" class="input_show" placeholder="0" disabled />
 
-                <input type="text" id="txt_code" name="expression" value="" class="input_show" placeholder="0" disabled />
-       
-                <div class="clearplusequal">
-                   <button type="button" class="btn btn-success btn-lg btn_clear" id="lgbut_clear"
-                      onclick="fun_clear()">Clear</button>
-                   <button type="button" class="btn btn-primary btn-lg btn_compute" id="lgbut_compute" onclick="fun_compute()">=</button>
-                </div>
-       
-                <div class=" numbers">
-                      <button type=" button" class="btn btn_num" onclick="fun_7()">7</button>
-                      <button type="button" class="btn btn_num" onclick="fun_8()">8</button>
-                      <button type="button" class="btn btn_num" onclick="fun_9()">9</button>
-                      <button type="button" class="btn btn_num" onclick="fun_add()">+</button>
-                      <br />
-                      <button type="button" class="btn btn_num" onclick="fun_4()">4</button>
-                      <button type="button" class="btn btn_num" onclick="fun_5()">5</button>
-                      <button type="button" class="btn btn_num" onclick="fun_6()">6</button>
-                      <button type="button" class="btn btn_num" onclick="fun_sub()">-</button>
-                      <br />
-                      <button type="button" class="btn btn_num" onclick="fun_1()">1</button>
-                      <button type="button" class="btn btn_num" onclick="fun_2()">2</button>
-                      <button type="button" class="btn btn_num" onclick="fun_3()">3</button>
-                      <button type="button" class="btn btn_num" onclick="fun_mul()">x</button>
-                      <br />
-                      <button type="button" class="btn btn_num" onclick="fun_0()">0</button>
-                      <button type="button" class="btn btn_num" onclick="fun_00()">00</button>
-                      <button type="button" class="btn btn_num" onclick="fun_dot()">.</button>
-                      <button type="button" class="btn btn_num" onclick="fun_div()">÷</button>
-                      <br />
-                      <!-- <button type="button" class="btn btn_histroy" onclick="">History</button> -->
-                </div>
-             </div>
-        </div>
-    </div>
-
-    <script>
-        var x = document.getElementById("txt_code");
-  
-        function fun_7() {
-           x.value += '7';
-        }
-  
-        function fun_8() {
-           x.value += '8';
-        }
-  
-        function fun_9() {
-           x.value += '9';
-        }
-  
-        function fun_div() {
-           x.value += '/';
-        }
-  
-        function fun_4() {
-           x.value += '4';
-        }
-  
-        function fun_5() {
-           x.value += '5';
-        }
-  
-        function fun_6() {
-           x.value += '6';
-        }
-  
-        function fun_mul() {
-           x.value += '*';
-        }
-  
-        function fun_1() {
-           x.value += '1';
-        }
-  
-        function fun_2() {
-           x.value += '2';
-        }
-  
-        function fun_3() {
-           x.value += '3';
-        }
-  
-        function fun_sub() {
-           x.value += '-';
-        }
-  
-        function fun_0() {
-           x.value += '0';
-        }
-  
-        function fun_00() {
-           x.value += '00';
-        }
-  
-        function fun_dot() {
-           x.value += '.';
-        }
-  
-        function fun_add() {
-           x.value += '+';
-        }
-  
-        function fun_clear() {
-           x.value = '';
-           //    y.value = '';
-        }
-  
-        // enable csrf_token
-        $.ajaxSetup({
-           data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
-        });
-  
-        // using onclick method
-        function fun_compute() {
-           // console.log("enter compute function!");
-           $.ajax({
-              url: '/compute/', //调用django服务器计算函数
-              type: 'POST', //请求类型
-              data: {
-                 'code': $('#txt_code').val()
-              }, //将获取文本框中的公式
-              dataType: 'json', //期望获得的响应类型为json
-              async: true,
-              error: function (request) {
-                 // console.log("Error!");
-                 return;
-              },
-              success: ShowResult //在请求成功之后调用该回调函数输出结果
-           });
-           // console.log("leave compute function!");
-        }
-  
-     </script>
-  
-     <script>
-        function ShowResult(data) {
-           var x = document.getElementById('txt_code');
-           x.value = data['result'];
-        }
-  
-        // using id, same as using onclick method
-        $('#lgbut_compute').click(function () {
-           $.ajax({
-              url: '/compute/', //调用django服务器计算函数
-              type: 'POST', //请求类型
-              data: {
-                 'code': $('#txt_code').val()
-              }, //将获取文本框中的公式
-              dataType: 'json', //期望获得的响应类型为json
-              success: ShowResult //在请求成功之后调用该回调函数输出结果
-           })
-        })
-     </script>
-    <!-- calculator part end -->
-
-    <!-- games part start -->
-     <div class="game-wrapper w">
-        <div class="game-label">
-            
-            <!-- <a> -->
-            <img src="{% static 'img/games.png' %}" alt="" width="23" height="20" class="">
-            <!-- </a> -->
-            <h3>Casual Games</h3>
-        </div>
-
-        <div class="games">
-            <div class="games-pic-wrapper">
+            <div class="clearplusequal">
+               <button type="button" class="btn btn-success btn-lg btn_clear" id="lgbut_clear"
+                  onclick="fun_clear()">Clear</button>
+               <button type="button" class="btn btn-primary btn-lg btn_compute" id="lgbut_compute"
+                  onclick="fun_compute()">=</button>
             </div>
-            <div class="guess-game-wrapper">
-                <h3>Guess Number Game</h3>
+
+            <div class=" numbers">
+               <button type=" button" class="btn btn_num" onclick="fun_7()">7</button>
+               <button type="button" class="btn btn_num" onclick="fun_8()">8</button>
+               <button type="button" class="btn btn_num" onclick="fun_9()">9</button>
+               <button type="button" class="btn btn_num" onclick="fun_add()">+</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_4()">4</button>
+               <button type="button" class="btn btn_num" onclick="fun_5()">5</button>
+               <button type="button" class="btn btn_num" onclick="fun_6()">6</button>
+               <button type="button" class="btn btn_num" onclick="fun_sub()">-</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_1()">1</button>
+               <button type="button" class="btn btn_num" onclick="fun_2()">2</button>
+               <button type="button" class="btn btn_num" onclick="fun_3()">3</button>
+               <button type="button" class="btn btn_num" onclick="fun_mul()">x</button>
+               <br />
+               <button type="button" class="btn btn_num" onclick="fun_0()">0</button>
+               <button type="button" class="btn btn_num" onclick="fun_00()">00</button>
+               <button type="button" class="btn btn_num" onclick="fun_dot()">.</button>
+               <button type="button" class="btn btn_num" onclick="fun_div()">÷</button>
+               <br />
+               <!-- <button type="button" class="btn btn_histroy" onclick="">History</button> -->
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <script>
+      var x = document.getElementById("txt_code");
+
+      function fun_7() {
+         x.value += '7';
+      }
+
+      function fun_8() {
+         x.value += '8';
+      }
+
+      function fun_9() {
+         x.value += '9';
+      }
+
+      function fun_div() {
+         x.value += '/';
+      }
+
+      function fun_4() {
+         x.value += '4';
+      }
+
+      function fun_5() {
+         x.value += '5';
+      }
+
+      function fun_6() {
+         x.value += '6';
+      }
+
+      function fun_mul() {
+         x.value += '*';
+      }
+
+      function fun_1() {
+         x.value += '1';
+      }
+
+      function fun_2() {
+         x.value += '2';
+      }
+
+      function fun_3() {
+         x.value += '3';
+      }
+
+      function fun_sub() {
+         x.value += '-';
+      }
+
+      function fun_0() {
+         x.value += '0';
+      }
+
+      function fun_00() {
+         x.value += '00';
+      }
+
+      function fun_dot() {
+         x.value += '.';
+      }
+
+      function fun_add() {
+         x.value += '+';
+      }
+
+      function fun_clear() {
+         x.value = '';
+         //    y.value = '';
+      }
+
+      // enable csrf_token
+      $.ajaxSetup({
+         data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+      });
+
+      // using onclick method
+      function fun_compute() {
+         // console.log("enter compute function!");
+         $.ajax({
+            url: '/compute/', //调用django服务器计算函数
+            type: 'POST', //请求类型
+            data: {
+               'code': $('#txt_code').val()
+            }, //将获取文本框中的公式
+            dataType: 'json', //期望获得的响应类型为json
+            async: true,
+            error: function (request) {
+               // console.log("Error!");
+               return;
+            },
+            success: ShowResult //在请求成功之后调用该回调函数输出结果
+         });
+         // console.log("leave compute function!");
+      }
+
+   </script>
+
+   <script>
+      function ShowResult(data) {
+         var x = document.getElementById('txt_code');
+         x.value = data['result'];
+      }
+
+      // using id, same as using onclick method
+      $('#lgbut_compute').click(function () {
+         $.ajax({
+            url: '/compute/',
+            type: 'POST',
+            data: {
+               'code': $('#txt_code').val()
+            },
+            dataType: 'json',
+            success: ShowResult
+         })
+      })
+   </script>
+   <!-- calculator part end -->
+
+   <!-- games part start -->
+   <div class="game-wrapper w">
+      <div class="game-label">
+
+         <!-- <a> -->
+         <img src="{% static 'img/games.png' %}" alt="" width="23" height="20" class="">
+         <!-- </a> -->
+         <h3>Casual Games</h3>
+      </div>
+
+      <div class="games">
+         <div class="games-pic-wrapper">
+         </div>
+         <div class="guess-game-wrapper">
+            <h3>Guess Number Game</h3>
             </br>
-                <a href="{% url 'guesspage' %}">
-                    <img src="{% static 'img/guess.jpeg' %}" alt="guess number game pic">
-                </a>
+            <a href="{% url 'guesspage' %}">
+               <img src="{% static 'img/guess.jpeg' %}" alt="guess number game pic">
+            </a>
             </br>
 
             <span>
                <p>Smart enough? Try to guess a number with the minimum number of times.</p>
             </span>
-            </div>
-       
-            <div class="rsp-game-wrapper">
-                <h3>R.S.P Game</h3>
+         </div>
+
+         <div class="rsp-game-wrapper">
+            <h3>R.S.P Game</h3>
             </br>
             <a href="{% url 'rsppage' %}">
-                <img src="{% static 'img/rsp.gif' %}" alt="rsp game pic">
+               <img src="{% static 'img/rsp.gif' %}" alt="rsp game pic">
             </a>
             </br>
 
@@ -257,22 +260,29 @@
                <p>Play the Rock Scissor Paper game with the computer and try your best to beat the computer!</p>
             </span>
 
-            </div>
-        </div>
+         </div>
+      </div>
 
-        <!-- repeat start -->
-     <div class="madlibs-games">
+      <!-- repeat start -->
+      <div class="madlibs-games">
          <div class="madlibs-games-pic-wrapper">
          </div>
          <div class="madlibs-game-wrapper">
             <h3>Mad Libs Game</h3>
             </br>
             <p>
-               Mad Libs is a phrasal template word game which consists of one player prompting others for a list of words to substitute for blanks in a story before reading aloud.
+               Mad Libs is a phrasal template word game which consists of one player prompting others for a list of
+               words to substitute for blanks in a story before reading aloud.
             </p>
             <br>
             <p>
-               Mad Libs was invented in 1953 by Leonard Stern and Roger Price.Stern and Price co-created the game, but could not agree on a name for their invention.No name was chosen until five years later (1958), when Stern and Price were eating Eggs Benedict at a restaurant in New York City. While eating, the two overheard an argument at a neighboring table between a talent agent and an actor.According to Price and Stern, during the overheard argument, the actor said that he wanted to "ad-lib" an upcoming interview. The agent, who clearly disagreed with the actor's suggestion, retorted that ad-libbing an interview would be "mad".
+               Mad Libs was invented in 1953 by Leonard Stern and Roger Price.Stern and Price co-created the game, but
+               could not agree on a name for their invention.No name was chosen until five years later (1958), when
+               Stern and Price were eating Eggs Benedict at a restaurant in New York City. While eating, the two
+               overheard an argument at a neighboring table between a talent agent and an actor.According to Price and
+               Stern, during the overheard argument, the actor said that he wanted to "ad-lib" an upcoming interview.
+               The agent, who clearly disagreed with the actor's suggestion, retorted that ad-libbing an interview would
+               be "mad".
             </p>
             <br>
             <p>
@@ -289,39 +299,40 @@
             <p>
                Play the Mad Libs game and try to enjoy yourself!
             </p>
-         </div>    
+         </div>
 
-     </div>
+      </div>
       <!-- repeat end -->
 
       <!-- repeat 2 start -->
       <div class="games">
-      <div class="games-pic-wrapper">
-      </div>
-      <div class="more-game-wrapper">
-         <h3>More games ......</h3>
-         </br>
-         <a href="#">
-            <img src="{% static 'img/moregames.jpeg' %}" alt="guess number game pic">
-         </a>
-      </div>
+         <div class="games-pic-wrapper">
+         </div>
+         <div class="more-game-wrapper">
+            <h3>More games ......</h3>
+            </br>
+            <a href="#">
+               <img src="{% static 'img/moregames.jpeg' %}" alt="guess number game pic">
+            </a>
+         </div>
 
       </div>
       <!-- repeat 2 end -->
 
-     </div>
-    <!-- games part end -->
+   </div>
+   <!-- games part end -->
 
-    <!-- footer start -->
-     <div class="foot-wrapper w">
-         <div class="footer-content">
-            <span>Copyright @2021</span>
-            <span> | </span>
-            <span>
-               <a href="#">About</a>
-            </span>
-         </div>
-     </div>
-    <!-- footer end -->
+   <!-- footer start -->
+   <div class="foot-wrapper w">
+      <div class="footer-content">
+         <span>Copyright @2021</span>
+         <span> | </span>
+         <span>
+            <a href="#">About</a>
+         </span>
+      </div>
+   </div>
+   <!-- footer end -->
 </body>
+
 </html>
