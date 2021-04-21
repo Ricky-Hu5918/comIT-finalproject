@@ -18,7 +18,7 @@
     margin: 20px auto; 
     border: 1px solid black;
     border-radius: 5px;
-    background-image: url("../img/bd.jpg");
+    /* background-image: url("../img/magic.jpeg"); */
 }
 
 .input_show {
@@ -27,13 +27,21 @@
     width: 256px;
     max-width: 280px;
     height: 40px;
+    font-size: 18px;
     border-radius: 5px;
 }
 
 .btn_num {
-    margin: 3px 1px;
+    margin: 5px 1px;
     height: 30px;
     width: 60px;
+    border-radius: 5px;
+    font-size: 18px;
+    /* background-color:darkorange */
+}
+
+.btn_num:hover {
+    background-color:pink;
 }
 
 .clearplusequal {
@@ -44,14 +52,21 @@
     height: 30px;
     width: 126px;
     margin: 0px 1px;
+    border-radius: 5px;
 }
-
+.btn_clear:hover {
+    background-color:pink;
+}
 .btn_compute {
     width: 126px;
     height: 30px;
+    font-size: 18px;
     margin: 0px 1px;
+    border-radius: 5px;
 }
-
+.btn_compute:hover {
+    background-color:pink;
+}
 .btn_histroy {
     margin: 20px 1px;
     height: 30px;
