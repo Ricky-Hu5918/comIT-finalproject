@@ -111,6 +111,6 @@ class RsppageView(View):
     def get(self, request):
         return render(request, 'rsp.html')
 
-class RspView(View):
-    def post(self, request):
-        pass
+class MadlibsView(View):
+    def get(self, request):
+        return render(request, 'madlibsgame.html')

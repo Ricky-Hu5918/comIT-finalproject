@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Libs Games</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/calc_app/base.css' %}" />
+    <link rel="shortcut icon" href="{% static '/img/logo.ico' %}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <!-- header start -->
+    <div class="nav-top w">
+        <div class="nav-logo">
+            <a class="nav-logo-icon" href="{% url 'index' %}">
+                <img src="{% static 'img/logo.png' %}" alt="" width="40" height="24" class="">
+            </a>
+            <span class="nav-logo-label">
+                <a href="{% url 'index' %}">Tools&Games</a>
+            </span>
+
+        </div>
+
+        <div class="search-form">
+            <form class="" action="https://Google.com/search" method="GET" target="_blank">
+                <input class="" type="search" placeholder="Google Search ..." aria-label="Search" name="q" >
+                <button class="" type="submit" name="btnK" >Search</button>
+            </form>
+        </div>
+
+        <div class="nav-right">
+            {% if request.user.username != '' %}
+                <span class="nav-hello">
+                    Hello, {{ request.user.username }}!
+                </span>
+
+                <span class="sign-out-label">
+                    <a href="{% url 'signout' %}" id="signout">Sign Out</a>
+                </span>
+            {% else %}
+                <span class="sign-in-label">
+                    <a href="{% url 'signin' %}">Sign In</a>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    <!-- header end -->
+
+    <div class="guess-form-wrapper w">
+        <div class="form-title">
+            <h2>Mad Libs Games</h2>
+            <div class="game-description">
+                <h4>How to play?</h4>
+                <p>Choose a theme button, and enter some words according to the hints, then in the end, read aloud and enjoy yourself.</p>
+            </div>
+        </div>
+
+        <div>
+            <form class="guess-input-area w" >
+                
+                 <div>
+                    <h3>Themes:</h3>
+                    <button class="guess-button" type="button" onclick="fun_halloween1()">Halloween-1</button>
+                    <button class="reset-button" type="button" onclick="fun_halloween2()">Halloween-2</button>  
+                </div>
+                <div>
+                    <button class="guess-button" type="button" onclick="fun_halloween()">Halloween</button>
+                    <button class="reset-button" type="button" onclick="fun_reset()">Reset</button>  
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="guess-footer w">
+        <h4>Copyright @2021</h4>
+    </footer>
+
+    <script>
+        function fun_halloween1() {
+            var holiday, noun1, place, person, adjective1, body_part, verb1, adjective2, noun2, food, nouns3;
+
+            // holiday = prompt("Please enter a holiday name: ");
+            // console.log(holiday);
+            if (holiday = prompt("Please enter a holiday name: "))
+            {
+                if (noun1 = prompt("Please enter a noun:"))
+                {
+                    if (place = prompt("Please enter a name of place:"))
+                    {
+                        if (person = prompt("Please enter a name of person:"))
+                        {
+                            if (adjective1 = prompt("Please enter an adjective:"))
+                            {
+                                if (body_part = prompt("Please enter a name of your body part:"))
+                                {                                   
+                                    if (verb1 = prompt("Please enter a verb:"))
+                                    {
+                                        if (adjective2 = prompt("Please enter an adjective:"))
+                                        {
+                                            if (noun2 = prompt("Please enter a noun:"))
+                                            {
+                                                if (food = prompt("Please enter a name of food:"))
+                                                {
+                                                    if (nouns3 = prompt("Please enter a plural noun:"))
+                                                    {
+                                                        alert("Ready to read aloud the Halloween story you created?")
+
+                                                        var story = "I can't believe it's already " + holiday + "!" + " I can't wait to put on my " + noun1 + " and visit every " + place + " in my neighborhood." + " This year, I am going to dress up as (a) " + person + " with " + adjective1 + " " + body_part + "." + " Before I " + verb1 +"," + " I make sure to grab my " + adjective2 + " " + noun2 + " to hold all of my " + food + "." + " Finally, all of my " + nouns3 + " are ready to go!";
+                                                        
+                                                        alert(story);
+                                                    }
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
+        function fun_halloween2() {
+            var famous_person, noun1, food1, food2, number1, verb1, family_member, food3, body_part, number2, adjective, holiday, nouns2;
+
+            if (famous_person = prompt("Please enter a name of famous person: "))
+            {
+                if (noun1 = prompt("Please enter a noun:"))
+                {
+                    if (food1 = prompt("Please enter a name of food:"))
+                    {
+                        if (food2 = prompt("Please enter a name of food:"))
+                        {
+                            if (number1 = prompt("Please enter a number:"))
+                            {
+                                if (verb1 = prompt("Please enter a verb:"))
+                                {
+                                    if (family_member = prompt("Please enter a name of your family member:"))
+                                    {
+                                        if (food3 = prompt("Please enter a name of food:"))
+                                        {
+                                            if (body_part = prompt("Please enter a name of your body part:"))
+                                            {
+                                                if (number2 = prompt("Please enter a number:"))
+                                                {
+                                                    if (adjective = prompt("Please enter a adjective:"))
+                                                    {
+                                                        if (nouns2 = prompt("Please enter a plural noun:"))
+                                                        {
+                                                            if (holiday = prompt("Please enter a holiday:"))
+                                                            {
+                                                                alert("Ready to read aloud the Halloween story you created?")
+
+                                                                var story = "When "+famous_person+" answers the door, I say, " + "'"+noun1+" or Treat!'" + " Yum! I got (a) "+food1+" and (a) "+food2+"." + " We visit " + number1 + " houses and decide it's time to "+verb1+" home." + " My "+ family_member+" says if I eat too much "+food3+","+" my "+body_part+" will hurt, so I'll eat just "+number2+" pieces and go straight to bed. I hope I'll have "+adjective+" dreads of "+nouns2+" tonight!"+" Happy "+holiday+"!";
+
+                                                                alert(story);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    </script>
+
+
+</body>
+</html>
