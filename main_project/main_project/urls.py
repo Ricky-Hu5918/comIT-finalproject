@@ -21,7 +21,11 @@ from calc_app import views
 from signin_app.views import SignInView, HomeView, SignUpView, SignOutView, GuesspageView, Guess, MadlibsView, RsppageView
 # from calc_app import views
 
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
+
 urlpatterns = [
+    path('favicon.ico/', RedirectView.as_view(url=staticfiles_storage.url('favicon/favicon.ico'))),
     path('admin/', admin.site.urls),
     # path('calcpage/', views.calcPage),
     path('compute/', views.compute),
